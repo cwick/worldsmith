@@ -1,12 +1,13 @@
-require 'rspec'
-require_relative '../../spec/spec_helper.rb'
-
 module TestWorld
   def player
     WorldSmith::Player.new
   end
 
   def rooms(name)
+
+  end
+
+  def command(name)
 
   end
 end

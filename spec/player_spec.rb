@@ -3,8 +3,8 @@ require 'spec_helper'
 module WorldSmith
   describe Player do
     context "freshly spawned" do
-      it "should not be in any room" do
-        subject.current_room.should be_nil
+      it "should be in limbo" do
+        subject.current_room.should == Room::Limbo
       end
 
       it "can be placed in a room" do
