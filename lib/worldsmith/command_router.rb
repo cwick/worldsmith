@@ -1,8 +1,6 @@
 module WorldSmith
   class CommandRouter
-    class NoRouteError < Exception
-
-    end
+    class NoRouteError < Exception; end
 
     class << self
       def routes

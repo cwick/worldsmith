@@ -38,5 +38,9 @@ module WorldSmith
 
       subject.find(:quit).name.should == "quit"
     end
+
+    it "should return nil when there is no matching route" do
+      subject.find(:does_not_exist).should be_nil
+    end
   end
 end
