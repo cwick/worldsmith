@@ -2,23 +2,15 @@ require 'spec_helper'
 
 module WorldSmith
   describe CommandProxy do
-    def mock_command_class(name)
-      command = double("#{name}_instance")
-      command.should_receive(:call)
+    include CommandProxyHelpers
 
-      Object.stub(:const_get) do
-        klass = double("#{name.capitalize}Command")
-        klass.stub(:new).and_return(command)
-        klass
-      end
+    before do
+      WorldSmith::Config.stub(:root_dir) { '/project_root' }
     end
 
     it "calls the real command when invoked" do
-      ::WorldSmith::Config = double()
-      ::WorldSmith::Config.stub(:root_dir) { '/project_root' }
-
       command_name = 'quit'
-      command_file = File.join(Config.root_dir, 'app', 'commands', command_name)
+      command_file = File.join(Config.root_dir, 'app', 'commands', "#{command_name}_command")
       command_class = mock_command_class(command_name)
 
       command_proxy = CommandProxy.new(command_name)
@@ -26,7 +18,12 @@ module WorldSmith
       command_proxy.call
     end
 
-    it "raises an exception if the real command can't be found"
+    it "raises an exception if the real command can't be found" do
+      command_proxy = CommandProxy.new('doesnt_exist')
+      command_proxy.stub(:require).and_raise(LoadError)
+
+      lambda { command_proxy.call }.should raise_error(NoCommandError)
+    end
   end
 end
 

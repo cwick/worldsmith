@@ -14,7 +14,7 @@ module WorldSmith
     it "raises an exception when invoking a route that doesn't exist" do
       lambda do
         CommandRouter.route(:does_not_exist)
-      end.should raise_error(CommandRouter::NoRouteError)
+      end.should raise_error(NoRouteError)
     end
   end
 

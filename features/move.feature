@@ -5,4 +5,5 @@ Feature: Player can move around
     Then I should be in the General Store
 
   Scenario: Where should the test app live?
+
     When pending

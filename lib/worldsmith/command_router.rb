@@ -1,7 +1,5 @@
 module WorldSmith
   class CommandRouter
-    class NoRouteError < Exception; end
-
     class << self
       def routes
         @routes ||= RoutingTable.new
