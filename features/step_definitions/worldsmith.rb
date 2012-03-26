@@ -1,20 +1,3 @@
-module TestWorld
-  def player
-    WorldSmith::Player.new
-  end
-
-  def rooms(name)
-
-  end
-
-  def command(name)
-    handler = WorldSmith::CommandRouter.route(name)
-    handler.call
-  end
-end
-
-World(TestWorld)
-
 Given /^I am in the Town Square$/ do
   player.current_room = rooms(:town_square)
 end

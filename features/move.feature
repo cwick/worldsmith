@@ -3,3 +3,6 @@ Feature: Player can move around
     Given I am in the Town Square
     When I move south
     Then I should be in the General Store
+
+  Scenario: Where should the test app live?
+    When pending

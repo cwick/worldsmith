@@ -8,7 +8,8 @@ module WorldSmith
       end
 
       def route(command)
-        routes.find(command) or raise NoRouteError
+        routes.find(command) or
+          raise NoRouteError.new("No route to '#{command}'.")
       end
     end
   end

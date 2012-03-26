@@ -36,7 +36,7 @@ module WorldSmith
         command :die
       end
 
-      subject.find(:quit).name.should == "quit"
+      subject.find(:die).name.should == "die"
     end
 
     it "should return nil when there is no matching route" do
@@ -44,3 +44,4 @@ module WorldSmith
     end
   end
 end
+
