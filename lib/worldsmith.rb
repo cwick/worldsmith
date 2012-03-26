@@ -1,2 +1,1 @@
-require_relative 'worldsmith/player.rb'
-require_relative 'worldsmith/room.rb'
+Dir[File.dirname(__FILE__) + "/worldsmith/**/*.rb"].each {|f| require f}

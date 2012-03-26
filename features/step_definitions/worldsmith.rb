@@ -8,7 +8,8 @@ module TestWorld
   end
 
   def command(name)
-
+    handler = WorldSmith::CommandRouter.route(name)
+    handler.call
   end
 end
 
