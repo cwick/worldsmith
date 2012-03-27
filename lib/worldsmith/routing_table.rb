@@ -29,7 +29,7 @@ module WorldSmith
       def command(name)
         @table.send(:set_entry,
                     name,
-                    Struct.new(:name).new(name.to_s))
+                    CommandProxy.new(name.to_s))
       end
     end
   end

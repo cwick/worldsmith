@@ -4,8 +4,12 @@ module WorldSmith
       @command = command.to_s
     end
 
+    def name
+      @command
+    end
+
     def call
-      command_file = File.join(Config.root_dir, 'app', 'commands', "#{@command}_command")
+      command_file = File.join(WorldSmith.root, 'app', 'commands', "#{@command}_command")
       require_command(command_file)
 
       class_name = "#{@command.capitalize}Command"

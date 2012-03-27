@@ -5,12 +5,12 @@ module WorldSmith
     include CommandProxyHelpers
 
     before do
-      WorldSmith::Config.stub(:root_dir) { '/project_root' }
+      WorldSmith.stub(:root) { '/project_root' }
     end
 
     it "calls the real command when invoked" do
       command_name = 'quit'
-      command_file = File.join(Config.root_dir, 'app', 'commands', "#{command_name}_command")
+      command_file = File.join(WorldSmith.root, 'app', 'commands', "#{command_name}_command")
       command_class = mock_command_class(command_name)
 
       command_proxy = CommandProxy.new(command_name)
