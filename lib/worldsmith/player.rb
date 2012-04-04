@@ -1,10 +1,10 @@
 module WorldSmith
   class Player
     def initialize
-      @current_room = Room::Limbo
+      @location = Room::Limbo
     end
 
-    attr_accessor :current_room
+    attr_accessor :location
   end
 end
 

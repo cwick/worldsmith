@@ -4,6 +4,9 @@ Feature: Player can move around
     When I move south
     Then I should be in the General Store
 
+  Scenario: What to do with glue code required to invoke a command?
+    When pending
+
   Scenario: Where should the test app live?
 
     When pending

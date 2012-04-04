@@ -10,12 +10,24 @@ Before do
 end
 
 module TestWorld
+  @@rooms = {}
+
+  # TODO move this into the database layer
+  @@rooms[:town_square] = WorldSmith::Room.new
+  @@rooms[:general_store] = WorldSmith::Room.new
+
+  @@rooms[:town_square].add_exit(:south, @@rooms[:general_store])
+
+  def initialize
+    @wtf = {}
+  end
+
   def player
     WorldSmith::Player.new
   end
 
   def rooms(name)
-
+    @@rooms[name]
   end
 
   def command(name)

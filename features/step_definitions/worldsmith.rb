@@ -1,5 +1,5 @@
 Given /^I am in the Town Square$/ do
-  player.current_room = rooms(:town_square)
+  player.location = rooms(:town_square)
 end
 
 When /^I move south$/ do
