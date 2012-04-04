@@ -5,6 +5,10 @@ WorldSmith::CommandRouter.routes.draw do
   command :south
 end
 
+Before do
+  WorldSmith.root = File.absolute_path(File.join(File.dirname(__FILE__), "../../"))
+end
+
 module TestWorld
   def player
     WorldSmith::Player.new
