@@ -4,8 +4,8 @@ module WorldSmith
   describe Command do
     it "keeps track of the current player" do
       player = Object.new
-      subject.current_player = player
-      subject.current_player.should == player
+      command = Command.new(current_player: player)
+      command.current_player.should == player
     end
   end
 end

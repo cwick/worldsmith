@@ -23,7 +23,7 @@ module TestWorld
   end
 
   def player
-    WorldSmith::Player.new
+    @player ||= WorldSmith::Player.new
   end
 
   def rooms(name)
@@ -32,6 +32,7 @@ module TestWorld
 
   def command(name)
     handler = WorldSmith::CommandRouter.route(name)
+    handler.env = { current_player: player }
     handler.call
   end
 end

@@ -1,7 +1,9 @@
 module CommandProxyHelpers
-  def mock_command_class(name)
-    command = double("#{name}_instance")
-    command.should_receive(:call)
+  def mock_command_class(name, command=nil)
+    if command.nil?
+      command = double("#{name}_instance")
+      command.should_receive(:call)
+    end
 
     Object.stub(:const_get) do
       klass = double("#{name.capitalize}Command")

@@ -1,5 +1,7 @@
 module WorldSmith
   class CommandProxy
+    attr_accessor :env
+
     def initialize(command)
       @command = command.to_s
     end
@@ -14,7 +16,7 @@ module WorldSmith
 
       class_name = "#{@command.capitalize}Command"
       klass = get_command_class(class_name)
-      klass.new.call
+      klass.new(env).call
     end
 
     private

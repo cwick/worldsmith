@@ -1,5 +1,13 @@
 module WorldSmith
   class Command
-    attr_accessor :current_player
+    attr_reader :env
+
+    def initialize(env)
+      @env = env
+    end
+
+    def current_player
+      env[:current_player]
+    end
   end
 end

@@ -14,7 +14,7 @@ module WorldSmith
       command_class = mock_command_class(command_name)
 
       command_proxy = CommandProxy.new(command_name)
-      command_proxy.should_receive(:require).with(command_file).and_return(command_class)
+      command_proxy.should_receive(:require).with(command_file)
       command_proxy.call
     end
 
@@ -23,6 +23,21 @@ module WorldSmith
       command_proxy.stub(:require).and_raise(LoadError)
 
       lambda { command_proxy.call }.should raise_error(NoCommandError)
+    end
+
+    it "passes the environment along to the real command" do
+      command_proxy = CommandProxy.new('hello')
+      command_proxy.stub(:require)
+      env = { foo: 'bar' }
+
+      command = double('HelloCommand')
+      command.stub(:call) {
+        env.should == env
+      }
+      mock_command_class('hello', command)
+
+      command_proxy.env = env
+      command_proxy.call
     end
   end
 end
