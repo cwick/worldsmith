@@ -46,5 +46,7 @@ module WorldSmith
         end
       end
     end
+
+    it "Assigns unique IDs to each room"
   end
 end
