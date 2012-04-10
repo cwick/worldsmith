@@ -1,0 +1,6 @@
+--- !ruby/object:WorldSmith::World
+rooms:
+- !ruby/object:WorldSmith::Room
+  exits: {}
+- !ruby/object:WorldSmith::Room
+  exits: {}

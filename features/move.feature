@@ -4,6 +4,9 @@ Feature: Player can move around
     When I move south
     Then I should be in the General Store
 
+  Scenario: Need to move rooms into the database layer
+    When pending
+
   Scenario: What to do with glue code required to invoke a command?
     When pending
 

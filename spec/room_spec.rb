@@ -49,10 +49,6 @@ module WorldSmith
         room.should_not have_exit(:notfound)
       end
     end
-
-    it "can contain objects"
-    it "can be persisted to a database"
-    it "can be restored from a database"
   end
 end
 
