@@ -2,6 +2,8 @@ module WorldSmith
   class Room
     Limbo = Class.new
 
+    attr_reader :id
+
     def initialize
       @exits = {}
     end
@@ -20,6 +22,10 @@ module WorldSmith
 
     def has_exit?(name)
       @exits.include?(name)
+    end
+
+    def ==(other)
+      self.id == other.id
     end
   end
 end

@@ -2,5 +2,8 @@
 rooms:
 - !ruby/object:WorldSmith::Room
   exits: {}
+  id: 1
 - !ruby/object:WorldSmith::Room
   exits: {}
+  id: 2
+next_id: 3

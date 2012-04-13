@@ -35,18 +35,26 @@ module WorldSmith
         File.should_receive(:open)
           .with(File.join(WorldSmith.root, 'db', 'world.yml'), 'r')
           .and_return(StringIO.new)
-        subject.load
+        World.load
       end
 
       it "restores the world" do
         File.open('spec/data/world_example.yml') do |world_data|
-          rooms = [Room.new, Room.new]
-          world = subject.load(world_data)
-          world.rooms.should == rooms
+          subject.add_room(Room.new)
+          subject.add_room(Room.new)
+          world = World.load(world_data)
+          world.rooms.should == subject.rooms
         end
       end
     end
 
-    it "Assigns unique IDs to each room"
+    it "Assigns unique IDs to each room" do
+      room1 = Room.new
+      room2 = Room.new
+      subject.add_room(room1)
+      subject.add_room(room2)
+
+      room1.id.should_not == room2.id
+    end
   end
 end
