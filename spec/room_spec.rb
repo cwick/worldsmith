@@ -49,6 +49,22 @@ module WorldSmith
         room.should_not have_exit(:notfound)
       end
     end
+
+    it "can be assigned an ID directly" do
+      subject.id = 123
+      subject.id.should == 123
+    end
+
+    it "can be linked to the world" do
+      world = double()
+      subject.world = world
+      subject.world.should == world
+    end
+
+    it "can not be assigned an ID after being linked to the world" do
+      subject.world = double()
+      lambda { subject.id = 123 }.should raise_error
+    end
   end
 end
 
