@@ -1,0 +1,11 @@
+--- !ruby/object:WorldSmith::World
+rooms:
+- !ruby/object:WorldSmith::Room
+  exits:
+    south: 2
+  id: 1
+- !ruby/object:WorldSmith::Room
+  exits: {}
+  id: 2
+next_id: 3
+

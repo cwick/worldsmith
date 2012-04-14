@@ -49,7 +49,7 @@ module WorldSmith
     end
 
     def find_room_by_id(id)
-      @rooms[id] or raise RoomNotFoundError
+      @rooms[id] or raise RoomNotFoundError.new(id)
     end
 
     private

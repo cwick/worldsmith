@@ -10,14 +10,6 @@ Before do
 end
 
 module TestWorld
-  @@rooms = {}
-
-  # TODO move this into the database layer
-  @@rooms[:town_square] = WorldSmith::Room.new
-  @@rooms[:general_store] = WorldSmith::Room.new
-
-  @@rooms[:town_square].add_exit(:south, @@rooms[:general_store])
-
   def initialize
     @wtf = {}
   end
@@ -26,8 +18,19 @@ module TestWorld
     @player ||= WorldSmith::Player.new
   end
 
+  def world
+    @world ||= WorldSmith::World.load
+  end
+
   def rooms(name)
-    @@rooms[name]
+    # TODO: support tags on rooms so we don't have to manually translate
+    case name
+    when :town_square
+      id = 1
+    when :general_store
+      id = 2
+    end
+    world.find_room_by_id(id)
   end
 
   def command(name)
