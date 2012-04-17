@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/worldsmith'
+
+WorldSmith.root = File.expand_path('../../app',  __FILE__)
+require_relative '../lib/worldsmith/cli'
+
