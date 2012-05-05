@@ -10,13 +10,8 @@ command = ARGV.shift
 command = aliases[command] || command
 
 case command
-# when 'server'
-#   require 'rails/commands/server'
-#   Rails::Server.new.tap { |server|
-#     require APP_PATH
-#     Dir.chdir(Rails.application.root)
-#     server.start
-#   }
+when 'server'
+  require_relative 'cli/server'
 #
 # when '--version', '-v'
 #   ARGV.unshift '--version'
